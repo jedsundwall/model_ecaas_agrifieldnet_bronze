@@ -123,7 +123,7 @@ this model for new inferencing.
 
 ### Training
 
-The data is processed first. For each band and each field, a number of descriptive statistics such as mean, median, standard deviation and so on are calculated. Then a number of concentric borders are drawn around the field of varying thickness. The bands in each border is analysed in the same manner and contributes more descriptive statistic features. Next this data is then clustered and upsampled to be more balanced.
+The data is processed first. For each band and each field, a number of descriptive statistics such as mean, median, standard deviation and so on are calculated. Then a number of concentric borders are drawn around the field of varying thickness. The bands in each border is analysed in the same manner and contributes more descriptive statistic features. A pretrained EarthNet model is also used to classify the terrain to the north, east, west and south of the field and this classification is added to the features. Next the features are clustered and then upsampled to be more balanced.
 
 ### Model
 
