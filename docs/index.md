@@ -133,5 +133,5 @@ The model itself is a random forest. A gradient booster does not work as well be
 
 Since a field can span multiple tiles, two outputs are prepared.
 
-- A normal CSV file where the crop type probability prediction is averages across tiles for each field.
+- A normal CSV file where the crop type probability prediction is averaged across tiles for each field.
 - A CSV file ending in `-w.csv` where the probabilities are weighted according to the size of each field in each tile (this is the output used in the competition).
