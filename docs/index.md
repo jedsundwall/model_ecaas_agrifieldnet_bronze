@@ -1,75 +1,37 @@
-# {{ Model Name (one line) }}
+# Looking further
 
-{{ Model Description (paragraph) }}
+This model classifies crop types for each field based on the field as well as on its surroundings.
 
-![{{model_id}}](https://radiantmlhub.blob.core.windows.net/frontend-dataset-images/odk_sample_agricultural_dataset.png)
+![model_ecaas_agrifieldnet_bronze_v1](https://radiantmlhub.blob.core.windows.net/frontend-dataset-images/odk_sample_agricultural_dataset.png)
 
-MLHub model id: `{{model_id}}`. Browse on [Radiant MLHub](https://mlhub.earth/model/{{model_id}}).
+MLHub model id: `model_ecaas_agrifieldnet_bronze_v1`. Browse on [Radiant MLHub](https://mlhub.earth/model/model_ecaas_agrifieldnet_bronze_v1).
 
 ## Training Data
 
-{{
+- [AgriFieldNet Competition Dataset - Source Imagery](https://api.radiant.earth/mlhub/v1/collections/ref_agrifieldnet_competition_v1_source)
+- [AgriFieldNet Competition Dataset - Test Labels](https://api.radiant.earth/mlhub/v1/collections/ref_agrifieldnet_competition_v1_labels_train)
 
-Provide links to the training data for this model. There should be separate
-links for source and labels collections as the following example. Make sure to
-include `Source` and `Labels` in the corresponding names of each collection.
+## Related MLHub Dataset
 
-
-Example using MLHub training data:
-
-- [Training Data Source](https://api.radiant.earth/mlhub/v1/collections/ref_african_crops_kenya_02_source)
-- [Training Data Labels](https://api.radiant.earth/mlhub/v1/collections/ref_african_crops_kenya_02_labels)
-
-}}
-
-## Related MLHub Dataset {{ (Optional) }}
-
-{{
-
-If this model was based on a dataset which is already published to MLHub, enter that link here.
-
-[https://mlhub.earth/data/ref_african_crops_kenya_02](https://mlhub.earth/data/ref_african_crops_kenya_02)
-
-}}
+[AgriFieldNet Competition Dataset](https://mlhub.earth/data/ref_agrifieldnet_competition_v1)
 
 ## Citation
 
-{{
-
-example:
-
-Amer, K. (2022) “A Spatio-Temporal Deep Learning-Based Crop Classification
-Model for Satellite Imagery”, Version 1.0, Radiant MLHub. [Date Accessed]
-Radiant MLHub. <https://doi.org/10.34911/rdnt.h28fju>
-
-}}
+Ferreira, M.G. and Dung, T. "Looking further", Version 1.0, Radiant MLHub. [Date Accessed] Radiant MLHub
 
 ## License
 
-{{
+[CC-BY-4.0](../LICENSE)
 
-example: CC-BY-4.0
+## Creators
 
-(update the LICENSE file in this repository to match the license)
+MG Ferreira - Ferra Solutions www.ferrasolutions.com [LinkedIn](https://www.linkedin.com/in/mg-ferreira-35534)
 
-}}
-
-## Creator{{s}}
-
-{{
-
-example: Model creators and links go here (examples: Radiant Earth Foundation, Microsoft
-AI for Good Research Lab).
-
-}}
+Tien Dung
 
 ## Contact
 
-{{
-
-Contact email goes here (example: ml@radiant.earth)
-
-}}
+Use linkedin to message.
 
 ## Applicable Spatial Extent
 
