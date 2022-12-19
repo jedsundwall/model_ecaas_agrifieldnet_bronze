@@ -31,123 +31,88 @@ Tien Dung
 
 ## Contact
 
-Use linkedin to message.
+Use LinkedIn to message.
 
 ## Applicable Spatial Extent
 
-{{
-
-Here please provide the applicable spatial extent, for new inferencing (this
-may be the same, or different than the spatial extent of the training data).
-Please provide the spatial extent bounding box as WKT text or GEOJSON text.
+The applicable spatial extent, for new inferencing.
 
 ```geojson
 {
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "id": 1,
-      "properties": {
-        "ID": 0
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [
-          [
-              [-90,35],
-              [-90,30],
-              [-85,30],
-              [-85,35],
-              [-90,35]
-          ]
-        ]
-      }
-    }
-  ]
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "properties": {
+                "id": "ref_agrifieldnet_competition_v1"
+            },
+            "type": "Feature",
+            "geometry": {
+                "type": "MultiPolygon",
+                "bbox": [
+                    76.2448,
+                    18.9414,
+                    88.046,
+                    28.327
+                ],
+                "coordinates": [
+                    [
+                        [
+                            [
+                                88.046,
+                                18.9414
+                            ],
+                            [
+                                88.046,
+                                28.327
+                            ],
+                            [
+                                76.2448,
+                                28.327
+                            ],
+                            [
+                                76.2448,
+                                18.9414
+                            ],
+                            [
+                                88.046,
+                                18.9414
+                            ]
+                        ]
+                    ]
+                ]
+            }
+        }
+    ]
 }
 ```
 
-<https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-geojson-and-topojson-maps>
-
-}}
-
 ## Applicable Temporal Extent
 
-{{
-
-The recommended start/end date of imagery for new inferencing. Example:
+The recommended start/end date of imagery for new inferencing.
 
 | Start | End |
 |-------|-----|
-| 2000-01-01 | present |
-
-}}
+| 2022-01-01 | present |
 
 ## Learning Approach
 
-{{
-
-The learning approach used to train the model. It is recommended that you use
-one of the values below, but other values are allowed.
-
 - Supervised
-- Unsupervised
-- Semi-supervised
-- Reinforcement-learning
-- Other (explain)
-
-}}
 
 ## Prediction Type
 
-{{
-
-The type of prediction that the model makes. It is recommended that you use one
-of the values below, but other values are allowed.
-
-- Object-detection
 - Classification
-- Segmentation
-- Regression
-- Other (explain)
-
-}}
 
 ## Model Architecture
 
-{{
-
-Identifies the architecture employed by the model. This may include any string
-identifiers, but publishers are encouraged to use well-known identifiers
-whenever possible. More details than just “it’s a CNN”!
-
-}}
+This will calculate descriptive statistics for each field as well as for a number of concentric borders around it. It will also classify the terrain type around the field. All of these features are then clustered, upsampled and finally fed into a random forest for classification.
 
 ## Training Operating System
 
-{{
-
-Identifies the operating system on which the model was trained.
-
-- Linux
-- Windows (win32)
-- Windows (cygwin)
 - MacOS (darwin)
-- Other (explain)
-
-}}
 
 ## Training Processor Type
 
-{{
-
-The type of processor used during training. Must be one of "cpu" or "gpu".
-
 - cpu
-- gpu
-
-}}
 
 ## Model Inferencing
 
@@ -156,37 +121,17 @@ this model for new inferencing.
 
 ## Methodology
 
-{{
-
-Use this section to provide more information to the reader about the model. Be
-as descriptive as possible. The suggested sub-sections are as following:
-
-}}
-
 ### Training
 
-{{
-
-Explain training steps such as augmentations and preprocessing used on image
-before training.
-
-}}
+The data is processed first. For each band and each field, a number of descriptive statistics such as mean, median, standard deviation and so on are calculated. Then a number of concentric borders are drawn around the field of varying thickness. The bands in each border is analysed in the same manner and contributes more descriptive statistic features. Next this data is then clustered and upsampled to be more balanced.
 
 ### Model
 
-{{
-
-Explain the model and why you chose the model in this section. A graphical representation
-of the model architecture could be helpful to individuals or organizations who would
-wish to replicate the workflow and reproduce the model results or to change the model
-architecture and improve the results.
-
-}}
+The model itself is a random forest. A gradient booster does not work as well because the features are highly correlated.
 
 ### Structure of Output Data
 
-{{
+Since a field can span multiple tiles, two outputs are prepared.
 
-Explain output file names and formats, interpretation, classes, etc.
-
-}}
+- A normal CSV file where the crop type probability prediction is averages across tiles for each field.
+- A CSV file ending in `-w.csv` where the probabilities are weighted according to the size of each field in each tile (this is the output used in the competition).
